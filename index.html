@@ -27,6 +27,12 @@
             transform-origin: 0% 100%;
             background-color: lightblue;
             clip-path: circle(50% at 0% 100%);
+            border-right: 1px solid #000;  /* 칸을 나누는 선 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-weight: bold;
         }
         #spin-button {
             margin-top: 20px;
@@ -56,8 +62,8 @@
     <button id="spin-button">Spin</button>
 
     <script>
-        const slices = ["Drink", "Jelly", "Candy", "Sorry next time", "One more Chance", "$10 Discount"];
-        const percentages = [5, 5, 5, 50, 20, 0.0000000000001];  // 퍼센트 배열
+        const slices = ["Drink", "Jelly", "candy", "Sorry next time", "One more chance", "$10 Discount"];
+        const percentages = [5, 5, 5, 70, 20, 0.0000000000001];  // 퍼센트 배열
         const weights = percentages.map(p => p / 100);  // 퍼센트를 가중치로 변환
         const roulette = document.getElementById('roulette');
 
@@ -69,7 +75,7 @@
                 const sliceElement = document.createElement('div');
                 sliceElement.className = 'slice';
                 sliceElement.style.transform = `rotate(${index * angle}deg)`;
-                sliceElement.textContent = slice;
+                sliceElement.innerHTML = `<span style='transform: rotate(${(index * angle + angle / 2) * -1}deg);'>${slice}</span>`;
                 roulette.appendChild(sliceElement);
             });
         }
@@ -97,3 +103,4 @@
     </script>
 </body>
 </html>
+
