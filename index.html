@@ -26,11 +26,7 @@
             left: 50%;
             transform-origin: 0% 100%;
             background-color: lightblue;
-            clip-path: circle(50% at 0% 100%);
-            border-right: 1px solid #000;  /* 칸을 나누는 선 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
             color: black;
             font-weight: bold;
         }
@@ -54,15 +50,15 @@
     </style>
 </head>
 <body>
-    <h1>Random Spin</h1>
+    <h1>Random spin</h1>
     <div id="roulette">
         <div id="arrow"></div>
         <!-- Placeholder for slices -->
     </div>
-    <button id="spin-button">Spin</button>
+    <button id="spin-button">Spin !</button>
 
     <script>
-        const slices = ["Drink", "Jelly", "candy", "Sorry next time", "One more chance", "$10 Discount"];
+        const slices = ["Drink", "Jelly", "Candy", "Sorry next time", "One more chance", "$10 Discount"];
         const percentages = [5, 5, 5, 70, 20, 0.0000000000001];  // 퍼센트 배열
         const weights = percentages.map(p => p / 100);  // 퍼센트를 가중치로 변환
         const roulette = document.getElementById('roulette');
