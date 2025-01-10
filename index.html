@@ -37,15 +37,15 @@
     </style>
 </head>
 <body>
-    <h1>룰렛 뽑기</h1>
+    <h1>Random Spin</h1>
     <div id="roulette">
         <!-- Placeholder for slices -->
     </div>
-    <button id="spin-button">돌리기</button>
+    <button id="spin-button">Spin</button>
 
     <script>
-        const slices = ["Free Drink", "Free Candy", "Free jelly", "Next time", "Next time", "Discount"];
-        const weights = [1, 5, 2, 10, 3, 0.5];  // 가중치 배열
+        const slices = ["Free Drink", "Free Candy", "Free jelly", "one more chance", "Sorry Next time", "$10 Discount"];
+        const weights = [1, 2, 2, 15, 50, 0.0001];  // 가중치 배열
         const roulette = document.getElementById('roulette');
 
         function createSlices() {
