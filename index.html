@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>룰렛 뽑기</title>
+    <title>Special roulette</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,7 +44,8 @@
     <button id="spin-button">돌리기</button>
 
     <script>
-        const slices = ["1번", "2번", "3번", "4번", "5번", "6번"];
+        const slices = ["Free Drink", "Free Candy", "Free jelly", "Next time", "Next time", "Discount"];
+        const weights = [1, 5, 2, 10, 3, 0.5];  // 가중치 배열
         const roulette = document.getElementById('roulette');
 
         function createSlices() {
@@ -60,8 +61,19 @@
             });
         }
 
+        function weightedRandom(weights) {
+            let sum = 0;
+            const random = Math.random() * weights.reduce((a, b) => a + b, 0);
+            for (let i = 0; i < weights.length; i++) {
+                sum += weights[i];
+                if (random < sum) return i;
+            }
+        }
+
         function spinRoulette() {
-            const randomDeg = Math.floor(Math.random() * 360);
+            const selectedSliceIndex = weightedRandom(weights);
+            const anglePerSlice = 360 / slices.length;
+            const randomDeg = selectedSliceIndex * anglePerSlice + anglePerSlice / 2;  // 중심 각도로 맞추기
             roulette.style.transition = 'transform 4s ease-out';
             roulette.style.transform = `rotate(${360 * 5 + randomDeg}deg)`;
         }
